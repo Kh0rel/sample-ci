@@ -1,3 +1,12 @@
-/**
- * Created by guillaumeChb on 03/06/2016.
- */
+var express = require('express');
+var api = express();
+
+api.get('/',function(req,res,next){
+   res.send('Hello world');
+});
+
+console.log('API linstening on port 3000');
+
+api.listen(3000);
+
+module.exports = api;
