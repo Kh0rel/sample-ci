@@ -13,7 +13,7 @@ describe('API',function(){
 
         it('GET /contacts/:name should return the list of registered contacts with the same name',function(){
             return request(api)
-                .get('/contacts:foo')
+                .get('/contacts/foo')
                 .send()
                 .expect(200)
                 .expect(function(res, err){
@@ -24,9 +24,14 @@ describe('API',function(){
         it('POST /contacts should create a new contact',function(){
            return request(api)
                .post('/contacts')
-               .send({name: "edward"})
+               .send({
+                 contact: {
+                   name : "edward"
+                 }
+               })
                .expect(200);
         });
+
 
         it('PUT /contacts/:name/:new should update all contatcs with the same name',function(){
             return request(api)
