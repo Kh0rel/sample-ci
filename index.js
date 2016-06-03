@@ -3,6 +3,7 @@ var bodyparser = require('body-parser')
 var api = express();
 var _ = require('lodash');
 var contacts = []
+var DEFAULT_PORT = 3000;
 
 api.get('/',function(req,res,next){
    res.send('Hello world');
@@ -48,9 +49,9 @@ api.delete('/contacts/:name', function(req, res, next){
     });
     res.send({count : count});
 })
+var port = process.env.PORT || DEFAULT_PORT;
+console.log('API linstening on port' + port);
 
-console.log('API linstening on port 3000');
-
-api.listen(3000);
+api.listen(port);
 
 module.exports = api;
